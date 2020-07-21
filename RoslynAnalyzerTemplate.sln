@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynAnalyzerTemplate", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynAnalyzerTemplate.Test", "RoslynAnalyzerTemplate\RoslynAnalyzerTemplate.Test\RoslynAnalyzerTemplate.Test.csproj", "{CD74734F-85BA-4D27-8057-D342874D2996}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynAnalyzerTemplate.Vsix", "RoslynAnalyzerTemplate\RoslynAnalyzerTemplate.Vsix\RoslynAnalyzerTemplate.Vsix.csproj", "{7A647E07-245A-4ED9-8847-DC3FA54D21F9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
