@@ -6,7 +6,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using RoslynAnalyzerTemplate;
-using Verify = Microsoft.CodeAnalysis.CSharp.CodeFix.Testing.MSTest.CodeFixVerifier<
+using Verify = Microsoft.CodeAnalysis.CSharp.Testing.MSTest.CodeFixVerifier<
     RoslynAnalyzerTemplate.RoslynAnalyzerTemplateAnalyzer,
     RoslynAnalyzerTemplate.RoslynAnalyzerTemplateCodeFixProvider>;
 
@@ -21,7 +21,7 @@ namespace RoslynAnalyzerTemplate.Test
         {
             var test = @"";
 
-            await Verify.VerifyCSharpDiagnosticAsync(test);
+            await Verify.VerifyAnalyzerAsync(test);
         }
 
         //Diagnostic and CodeFix both triggered and checked for
@@ -59,7 +59,7 @@ namespace RoslynAnalyzerTemplate.Test
     }";
 
             var expected = Verify.Diagnostic("RoslynAnalyzerTemplate").WithLocation(11, 15).WithArguments("TypeName");
-            await Verify.VerifyCSharpFixAsync(test, expected, fixtest);
+            await Verify.VerifyCodeFixAsync(test, expected, fixtest);
         }
     }
 }
