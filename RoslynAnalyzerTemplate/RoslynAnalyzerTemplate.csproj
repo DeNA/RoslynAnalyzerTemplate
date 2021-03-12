@@ -5,7 +5,7 @@
     <IsPackable>false</IsPackable>
 
     <!-- Avoid ID conflicts with the package project. -->
-    <PackageId>*$(MSBuildProjectFullPath)*</PackageId>
+    <PackageId>RoslynAnalyzerTemplate.Analyzer</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
