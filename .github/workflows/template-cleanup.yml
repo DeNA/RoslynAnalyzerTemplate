@@ -38,6 +38,9 @@ jobs:
           sed -i "s/%NAME%/$NAME/g" .github/template-cleanup/*
           sed -i "s/%REPOSITORY%/${GITHUB_REPOSITORY/\//\\/}/g" .github/template-cleanup/*
 
+          # Replace template name in workflows
+          find .github/workflows -type f \( -not -name template-cleanup.yml \) -exec sed -i "s/RoslynAnalyzerTemplate/$NAME/g" {} +
+
           # Rename template project directories
           for file in $(find . -type d -name 'RoslynAnalyzerTemplate*'); do
             mv $file ${file/RoslynAnalyzerTemplate/$NAME}
