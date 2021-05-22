@@ -6,7 +6,7 @@
     <OutputType>library</OutputType>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <PackageId>RoslynAnalyzerTemplate.Analyzer</PackageId> <!-- Avoid ID conflicts with the package project. -->
+    <PackageId>RoslynAnalyzerTemplate.Diagnostic</PackageId> <!-- Avoid ID conflicts with the package project. -->
   </PropertyGroup>
 
   <ItemGroup>
