@@ -47,8 +47,8 @@ jobs:
           done
 
           # Replace template name in project files
-          find . -type f -name *.sln -or *.csproj -or *.cs -or resx -exec sed -i "s/RoslynAnalyzerTemplate/$NAME/g" {} +
-          find . -type f -name *.csproj -exec sed -i "s/%AUTHOR%/$ACTOR/g" {} +
+          find . -type f -name "*.sln" -or -name "*.csproj" -or -name "*.cs" -or -name "*.resx" -exec sed -i "s/RoslynAnalyzerTemplate/$NAME/g" {} +
+          find . -type f -name "*.csproj" -exec sed -i "s/%AUTHOR%/$ACTOR/g" {} +
 
           # Move content
           cp -R .github/template-cleanup/* .
