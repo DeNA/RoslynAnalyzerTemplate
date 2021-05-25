@@ -1,12 +1,17 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Dena.CodeAnalysis.CSharp.Testing;
-using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace RoslynAnalyzerTemplate.Test
 {
+    /// <summary>
+    /// This test is an examples of using the Dena.CodeAnalysis.Testing test helper library.
+    /// <see cref="https://github.com/DeNA/Dena.CodeAnalysis.Testing"/>
+    /// </summary>
     [TestClass]
     public class RoslynAnalyzerTemplateTest
     {
@@ -24,40 +29,29 @@ namespace RoslynAnalyzerTemplate.Test
         [TestMethod]
         public async Task TestMethod2()
         {
-            const string Test = @"
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Diagnostics;
-
-    namespace ConsoleApplication1
-    {
-        class TypeName
-        {
-        }
-    }";
-
             var analyzer = new RoslynAnalyzerTemplateAnalyzer();
-            var diagnostics = await DiagnosticAnalyzerRunner.Run(analyzer, Test);
+            var diagnostics = await DiagnosticAnalyzerRunner.Run(analyzer, ReadCodes("TypeName.cs"));
 
-            var warns = diagnostics
-                .Where(x => x.Severity >= DiagnosticSeverity.Warning) // Ignore Hidden and Info
+            var actual = diagnostics
                 .Where(x => x.Id != "CS1591") // Ignore "Missing XML comment for publicly visible type or member"
+                .Where(x => x.Id != "CS8019") // Ignore "Unnecessary using directive"
                 .ToArray();
-            Assert.AreEqual(1, warns.Length);
 
-            var actual = warns.First();
-            Assert.IsNotNull(actual);
-            Assert.AreEqual("RoslynAnalyzerTemplate", actual.Id);
-            Assert.AreEqual("Type name 'TypeName' contains lowercase letters", actual.GetMessage());
+            Assert.AreEqual(1, actual.Length);
+            Assert.AreEqual("RoslynAnalyzerTemplate", actual.First().Id);
+            Assert.AreEqual("Type name 'TypeName' contains lowercase letters", actual.First().GetMessage());
 
             LocationAssert.HaveTheSpan(
-                new LinePosition(10, 14),
-                new LinePosition(10, 22),
-                actual.Location
+                new LinePosition(9, 10),
+                new LinePosition(9, 18),
+                actual.First().Location
             );
+        }
+
+        private static string[] ReadCodes(params string[] sources)
+        {
+            const string Path = "../../../TestData";
+            return sources.Select(file => File.ReadAllText($"{Path}/{file}", Encoding.UTF8)).ToArray();
         }
     }
 }
