@@ -14,8 +14,13 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.8.0"/>
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3">
       <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="AnalyzerReleases.Shipped.md"/>
+    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md"/>
   </ItemGroup>
 
   <!-- Apply this project myself as an analyzer for this project -->

@@ -8,7 +8,7 @@ namespace RoslynAnalyzerTemplate;
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class RoslynAnalyzerTemplate : DiagnosticAnalyzer
 {
-    public const string DiagnosticId = "RoslynAnalyzerTemplate";
+    public const string DiagnosticId = "RAT0001";
 
     private static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
         id: DiagnosticId,
@@ -17,7 +17,7 @@ public class RoslynAnalyzerTemplate : DiagnosticAnalyzer
         category: "Naming",
         defaultSeverity: DiagnosticSeverity.Warning,
         isEnabledByDefault: true,
-        description: "Type names should be all uppercase");
+        description: "Type names should be all uppercase.");
 
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
