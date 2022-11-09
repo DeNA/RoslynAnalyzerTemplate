@@ -32,21 +32,18 @@ jobs:
 
           # Prepare variables
           NAME="${GITHUB_REPOSITORY##*/}"
-          ACTOR=$(echo $GITHUB_ACTOR | tr '[:upper:]' '[:lower:]')
-          SAFE_NAME=$(echo $NAME | sed 's/[^a-zA-Z0-9]//g' | tr '[:upper:]' '[:lower:]')
-          SAFE_ACTOR=$(echo $ACTOR | sed 's/[^a-zA-Z0-9]//g' | tr '[:upper:]' '[:lower:]')
+          ACTOR=$(echo "$GITHUB_ACTOR" | tr '[:upper:]' '[:lower:]')
+          SAFE_NAME=$(echo "$NAME" | sed 's/[^a-zA-Z0-9]//g' | tr '[:upper:]' '[:lower:]')
+          SAFE_ACTOR=$(echo "$ACTOR" | sed 's/[^a-zA-Z0-9]//g' | tr '[:upper:]' '[:lower:]')
+          GROUP="com.github.$SAFE_ACTOR.$SAFE_NAME"
 
           # Replace placeholders in the template-cleanup files
           sed -i "s/%NAME%/$NAME/g" .github/template-cleanup/*
           sed -i "s/%REPOSITORY%/${GITHUB_REPOSITORY/\//\\/}/g" .github/template-cleanup/*
+          sed -i "s/%GROUP%/$GROUP/g" .github/template-cleanup/*
 
           # Rename template project directories
-          for file in $(find . -type d -name 'RoslynAnalyzerTemplate*'); do
-            mv $file ${file/RoslynAnalyzerTemplate/$NAME}
-          done
-          for file in $(find . -type f -name 'RoslynAnalyzerTemplate*'); do
-            mv $file ${file/RoslynAnalyzerTemplate/$NAME}
-          done
+          find . -name "RoslynAnalyzerTemplate*" -print0 | perl -pe 's/\.\/RoslynAnalyzerTemplate//g' | xargs -0 -I% mv RoslynAnalyzerTemplate% "$NAME"%
 
           # Replace template name in project files
           find . -type f \( -name "*.sln" -or -name "*.csproj" -or -name "*.cs" \) -exec sed -i "s/RoslynAnalyzerTemplate/$NAME/g" {} +
