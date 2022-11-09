@@ -4,54 +4,60 @@ using System.Text;
 using System.Threading.Tasks;
 using Dena.CodeAnalysis.CSharp.Testing;
 using Microsoft.CodeAnalysis.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
-namespace RoslynAnalyzerTemplate.Test
+namespace RoslynAnalyzerTemplate.Test;
+
+/// <summary>
+/// This test is an examples of using the Dena.CodeAnalysis.Testing test helper library.
+/// <see cref="https://github.com/DeNA/Dena.CodeAnalysis.Testing"/>
+/// </summary>
+[TestFixture]
+public class RoslynAnalyzerTemplateTest
 {
     /// <summary>
-    /// This test is an examples of using the Dena.CodeAnalysis.Testing test helper library.
-    /// <see cref="https://github.com/DeNA/Dena.CodeAnalysis.Testing"/>
+    /// Test analyze for empty source code
     /// </summary>
-    [TestClass]
-    public class RoslynAnalyzerTemplateTest
+    [Test]
+    public async Task EmptySourceCode_NoDiagnosticReport()
     {
-        [TestMethod]
-        public async Task TestMethod1()
-        {
-            const string Test = "";
+        const string source = "";
+        var analyzer = new RoslynAnalyzerTemplate();
+        var diagnostics = await DiagnosticAnalyzerRunner.Run(analyzer, source);
 
-            var analyzer = new RoslynAnalyzerTemplateAnalyzer();
-            var diagnostics = await DiagnosticAnalyzerRunner.Run(analyzer, Test);
+        Assert.That(diagnostics.Length, Is.EqualTo(0));
+    }
 
-            Assert.AreEqual(0, diagnostics.Length);
-        }
+    /// <summary>
+    /// Test analyze for containing lowercase type name in source code
+    /// </summary>
+    [Test]
+    public async Task TypeNameContainingLowercase_ReportOneDiagnostic()
+    {
+        var source = ReadCodes("TypeNameContainingLowercase.cs");
+        var analyzer = new RoslynAnalyzerTemplate();
+        var diagnostics = await DiagnosticAnalyzerRunner.Run(analyzer, source);
 
-        [TestMethod]
-        public async Task TestMethod2()
-        {
-            var analyzer = new RoslynAnalyzerTemplateAnalyzer();
-            var diagnostics = await DiagnosticAnalyzerRunner.Run(analyzer, ReadCodes("TypeName.cs"));
+        var actual = diagnostics
+            .Where(x => x.Id != "CS1591") // Ignore "Missing XML comment for publicly visible type or member"
+            .Where(x => x.Id != "CS8019") // Ignore "Unnecessary using directive"
+            .ToArray();
 
-            var actual = diagnostics
-                .Where(x => x.Id != "CS1591") // Ignore "Missing XML comment for publicly visible type or member"
-                .Where(x => x.Id != "CS8019") // Ignore "Unnecessary using directive"
-                .ToArray();
+        Assert.That(actual.Length, Is.EqualTo(1));
+        Assert.That(actual.First().Id, Is.EqualTo("RAT0001"));
+        Assert.That(actual.First().GetMessage(), Is.EqualTo("Type name 'TypeName' contains lowercase letters"));
 
-            Assert.AreEqual(1, actual.Length);
-            Assert.AreEqual("RoslynAnalyzerTemplate", actual.First().Id);
-            Assert.AreEqual("Type name 'TypeName' contains lowercase letters", actual.First().GetMessage());
+        LocationAssert.HaveTheSpan(
+            new LinePosition(9, 6),
+            new LinePosition(9, 14),
+            actual.First().Location
+        );
+    }
 
-            LocationAssert.HaveTheSpan(
-                new LinePosition(9, 10),
-                new LinePosition(9, 18),
-                actual.First().Location
-            );
-        }
-
-        private static string[] ReadCodes(params string[] sources)
-        {
-            const string Path = "../../../TestData";
-            return sources.Select(file => File.ReadAllText($"{Path}/{file}", Encoding.UTF8)).ToArray();
-        }
+    private static string[] ReadCodes(params string[] sources)
+    {
+        const string path = "../../../TestData";
+        return sources.Select(file => File.ReadAllText($"{path}/{file}", Encoding.UTF8)).ToArray();
     }
 }
