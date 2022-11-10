@@ -18,11 +18,6 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <AdditionalFiles Include="AnalyzerReleases.Shipped.md"/>
-    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md"/>
-  </ItemGroup>
-
   <!-- Apply this project myself as an analyzer for this project -->
   <ItemGroup Condition="Exists('$(TargetPath)')">
     <Analyzer Include="$(TargetPath)"/>
