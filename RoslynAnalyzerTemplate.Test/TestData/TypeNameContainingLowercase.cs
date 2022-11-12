@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace TypeNameContainingLowercase;
-
-class TypeName
+namespace TypeNameContainingLowercase
 {
+    class TypeName
+    {
+    }
 }
