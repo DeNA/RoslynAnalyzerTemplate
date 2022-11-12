@@ -4,8 +4,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-    <developmentDependency>true</developmentDependency>
     <IsRoslynComponent>true</IsRoslynComponent>
   </PropertyGroup>
 
@@ -21,5 +19,25 @@
   <ItemGroup Condition="Exists('$(TargetPath)')">
     <Analyzer Include="$(TargetPath)"/>
   </ItemGroup>
+
+  <!-- For pack -->
+  <PropertyGroup>
+    <id></id>
+    <version></version>
+    <description></description>
+    <authors></authors>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <IncludeSymbols>false</IncludeSymbols>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <developmentDependency>true</developmentDependency>
+  </PropertyGroup>
+
+  <Target Name="PackBuildOutputs" DependsOnTargets="SatelliteDllsProjectOutputGroup;DebugSymbolsProjectOutputGroup">
+    <ItemGroup>
+      <TfmSpecificPackageFile Include="$(TargetDir)\*.dll" PackagePath="analyzers\dotnet\cs"/>
+      <TfmSpecificPackageFile Include="@(SatelliteDllsProjectOutputGroupOutput->'%(FinalOutputPath)')" PackagePath="analyzers\dotnet\cs\%(SatelliteDllsProjectOutputGroupOutput.Culture)\"/>
+    </ItemGroup>
+  </Target>
 
 </Project>
