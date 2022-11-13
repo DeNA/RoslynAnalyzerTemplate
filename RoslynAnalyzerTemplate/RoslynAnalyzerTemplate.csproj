@@ -22,10 +22,21 @@
 
   <!-- For pack -->
   <PropertyGroup>
-    <id></id>
+    <!-- Required elements-->
+    <id>RoslynAnalyzerTemplate</id><!-- Must be unique within the hosting gallery -->
     <version></version>
     <description></description>
     <authors></authors>
+
+    <!-- Optional elements -->
+    <projectUrl>https://github.com/nowsprinting/RoslynAnalyzerTemplate</projectUrl>
+    <license type="expression"></license>
+    <icon></icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright></copyright>
+    <title></title>
+
+    <!-- For analyzer package -->
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <IncludeSymbols>false</IncludeSymbols>
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>

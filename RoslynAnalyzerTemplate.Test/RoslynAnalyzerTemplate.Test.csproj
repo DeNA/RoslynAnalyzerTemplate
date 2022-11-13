@@ -24,7 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RoslynAnalyzerTemplate\RoslynAnalyzerTemplate.csproj"/>
+    <ProjectReference Include="..\RoslynAnalyzerTemplate\RoslynAnalyzerTemplate.csproj">
+      <OutputItemType>Analyzer</OutputItemType>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>
