@@ -30,7 +30,7 @@
 
     <!-- Optional elements -->
     <projectUrl>https://github.com/nowsprinting/RoslynAnalyzerTemplate</projectUrl>
-    <license type="expression"></license>
+    <license></license>
     <icon></icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright></copyright>
