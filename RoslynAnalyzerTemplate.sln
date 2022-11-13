@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynAnalyzerTemplate", "RoslynAnalyzerTemplate\RoslynAnalyzerTemplate.csproj", "{1FA708B1-87F8-4244-89E4-26087BB74760}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynAnalyzerTemplate.CodeFixes", "RoslynAnalyzerTemplate.CodeFixes\RoslynAnalyzerTemplate.CodeFixes.csproj", "{42CA283D-A6CC-40B6-8B0F-8F2AAAA6AC54}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynAnalyzerTemplate.Package", "RoslynAnalyzerTemplate.Package\RoslynAnalyzerTemplate.Package.csproj", "{D023A374-2A84-4D8A-A2AE-8A20CF28FE28}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynAnalyzerTemplate.Test", "RoslynAnalyzerTemplate.Test\RoslynAnalyzerTemplate.Test.csproj", "{4ECDB3FA-0F8F-4EEB-A0F1-3A19167F3B89}"
 EndProject
 Global
@@ -21,14 +17,6 @@ Global
 		{1FA708B1-87F8-4244-89E4-26087BB74760}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FA708B1-87F8-4244-89E4-26087BB74760}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FA708B1-87F8-4244-89E4-26087BB74760}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42CA283D-A6CC-40B6-8B0F-8F2AAAA6AC54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42CA283D-A6CC-40B6-8B0F-8F2AAAA6AC54}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42CA283D-A6CC-40B6-8B0F-8F2AAAA6AC54}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42CA283D-A6CC-40B6-8B0F-8F2AAAA6AC54}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D023A374-2A84-4D8A-A2AE-8A20CF28FE28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D023A374-2A84-4D8A-A2AE-8A20CF28FE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D023A374-2A84-4D8A-A2AE-8A20CF28FE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D023A374-2A84-4D8A-A2AE-8A20CF28FE28}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4ECDB3FA-0F8F-4EEB-A0F1-3A19167F3B89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4ECDB3FA-0F8F-4EEB-A0F1-3A19167F3B89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ECDB3FA-0F8F-4EEB-A0F1-3A19167F3B89}.Release|Any CPU.ActiveCfg = Release|Any CPU

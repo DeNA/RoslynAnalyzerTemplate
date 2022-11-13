@@ -45,12 +45,12 @@ public class RoslynAnalyzerTemplateTest
             .ToArray();
 
         Assert.That(actual.Length, Is.EqualTo(1));
-        Assert.That(actual.First().Id, Is.EqualTo("RAT0001"));
+        Assert.That(actual.First().Id, Is.EqualTo("RoslynAnalyzerTemplate0001"));
         Assert.That(actual.First().GetMessage(), Is.EqualTo("Type name 'TypeName' contains lowercase letters"));
 
         LocationAssert.HaveTheSpan(
-            new LinePosition(9, 6),
-            new LinePosition(9, 14),
+            new LinePosition(9, 10),
+            new LinePosition(9, 18),
             actual.First().Location
         );
     }

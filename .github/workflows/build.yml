@@ -24,13 +24,11 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Build
-        run: dotnet build --configuration Release
-
       - name: Test
         run: dotnet test --logger junit --results-directory "TestResults-${{ env.DOTNET_VERSION }}"
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
         with:
           name: dotnet-test-results-${{ env.DOTNET_VERSION }}
           path: TestResults-${{ env.DOTNET_VERSION }}
