@@ -8,7 +8,7 @@ namespace RoslynAnalyzerTemplate;
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class RoslynAnalyzerTemplate : DiagnosticAnalyzer
 {
-    public const string DiagnosticId = "RAT0001";
+    internal const string DiagnosticId = "RoslynAnalyzerTemplate0001";
 
     private static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
         id: DiagnosticId,

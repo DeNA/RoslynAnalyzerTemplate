@@ -13,4 +13,4 @@ All you have to do is click the <kbd>Use this template</kbd> button.
 
 After using the template to create your blank project, the Template Cleanup workflow will be triggered to override or remove any template-specific configurations, such as the project name, current changelog, etc.
 
-For the last step, you have to manually modify the configuration in the YOUR_ANALYZER.Package/YOUR_ANALYZER.Package.csproj
+For the last step, you have to manually modify the configuration in the YOUR_ANALYZER_NAME/YOUR_ANALYZER_NAME.csproj
