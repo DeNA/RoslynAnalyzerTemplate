@@ -48,7 +48,7 @@ jobs:
           done
 
           # Replace template name in project files
-          find . -type f -name "*.csproj" -exec sed -i "s/nowsprinting\/RoslynAnalyzerTemplate/$GITHUB_REPOSITORY/g" {} +
+          find . -type f -name "*.csproj" -exec sed -i "s/nowsprinting\\/RoslynAnalyzerTemplate/$GITHUB_REPOSITORY/g" {} +
           find . -type f \( -name "*.sln" -or -name "*.csproj" -or -name "*.cs" -or -name "*.md" \) -exec sed -i "s/RoslynAnalyzerTemplate/$NAME/g" {} +
 
           # Replace placeholders in the template-cleanup files
