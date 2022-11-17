@@ -1,10 +1,10 @@
 # Roslyn Analyzer Template
 
-This repository provides a pure boilerplate template to make it easier to create a new analyzer project.
+This repository provides a pure boilerplate template and examples to make it easier to create a new analyzer project.
 
-The analyzer project contained in this repository is based on the [project template in the Roslyn SDK](https://github.com/dotnet/roslyn-sdk/tree/main/src/VisualStudio.Roslyn.SDK/Roslyn.SDK/ProjectTemplates/CSharp/Diagnostic).
+The analyzer project contained in this repository is based on the [project template in the Roslyn SDK](https://github.com/dotnet/roslyn-sdk/tree/main/src/VisualStudio.Roslyn.SDK/Roslyn.SDK/ProjectTemplates/CSharp/Diagnostic), made slim.
 
-The workflow contained in this repository is inspired by [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template).
+The cleanup workflow contained in this repository is inspired by [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template).
 
 
 ## Getting started
