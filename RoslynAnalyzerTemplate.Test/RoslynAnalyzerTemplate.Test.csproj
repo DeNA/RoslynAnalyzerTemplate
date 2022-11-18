@@ -25,7 +25,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RoslynAnalyzerTemplate\RoslynAnalyzerTemplate.csproj">
-      <OutputItemType>Analyzer</OutputItemType>
+      <PrivateAssets>all</PrivateAssets>
+      <!-- If enabling the target analyzer in this test project, set ReferenceOutputAssembly="false" and OutputItemType="Analyzer".
+            See https://www.meziantou.net/referencing-an-analyzer-from-a-project.htm -->
     </ProjectReference>
   </ItemGroup>
 
