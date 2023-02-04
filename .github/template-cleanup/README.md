@@ -13,4 +13,4 @@
 ---
 Analyzer based on the [Roslyn Analyzer Template][template].
 
-[template]: https://github.com/nowsprinting/RoslynAnalyzerTemplate
+[template]: https://github.com/DeNA/RoslynAnalyzerTemplate
