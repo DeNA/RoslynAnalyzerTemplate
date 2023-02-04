@@ -11,7 +11,7 @@ namespace RoslynAnalyzerTemplate.Test;
 
 /// <summary>
 /// This test is an examples of using the Dena.CodeAnalysis.Testing test helper library.
-/// <see cref="https://github.com/DeNA/Dena.CodeAnalysis.Testing"/>
+/// <see href="https://github.com/DeNA/Dena.CodeAnalysis.Testing"/>
 /// </summary>
 [TestFixture]
 public class RoslynAnalyzerTemplateTest
@@ -22,11 +22,11 @@ public class RoslynAnalyzerTemplateTest
     [Test]
     public async Task EmptySourceCode_NoDiagnosticReport()
     {
-        const string source = "";
+        const string Source = "";
         var analyzer = new RoslynAnalyzerTemplate();
-        var diagnostics = await DiagnosticAnalyzerRunner.Run(analyzer, source);
+        var diagnostics = await DiagnosticAnalyzerRunner.Run(analyzer, Source);
 
-        Assert.That(diagnostics.Length, Is.EqualTo(0));
+        Assert.That(diagnostics, Is.Empty);
     }
 
     /// <summary>
@@ -44,7 +44,7 @@ public class RoslynAnalyzerTemplateTest
             .Where(x => x.Id != "CS8019") // Ignore "Unnecessary using directive"
             .ToArray();
 
-        Assert.That(actual.Length, Is.EqualTo(1));
+        Assert.That(actual, Has.Length.EqualTo(1));
         Assert.That(actual.First().Id, Is.EqualTo("RoslynAnalyzerTemplate0001"));
         Assert.That(actual.First().GetMessage(), Is.EqualTo("Type name 'TypeName' contains lowercase letters"));
 
@@ -57,7 +57,7 @@ public class RoslynAnalyzerTemplateTest
 
     private static string[] ReadCodes(params string[] sources)
     {
-        const string path = "../../../TestData";
-        return sources.Select(file => File.ReadAllText($"{path}/{file}", Encoding.UTF8)).ToArray();
+        const string Path = "../../../TestData";
+        return sources.Select(file => File.ReadAllText($"{Path}/{file}", Encoding.UTF8)).ToArray();
     }
 }

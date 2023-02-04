@@ -10,7 +10,7 @@ public class RoslynAnalyzerTemplate : DiagnosticAnalyzer
 {
     internal const string DiagnosticId = "RoslynAnalyzerTemplate0001";
 
-    private static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
+    private static readonly DiagnosticDescriptor s_rule = new DiagnosticDescriptor(
         id: DiagnosticId,
         title: "Type name contains lowercase letters",
         messageFormat: "Type name '{0}' contains lowercase letters",
@@ -19,7 +19,7 @@ public class RoslynAnalyzerTemplate : DiagnosticAnalyzer
         isEnabledByDefault: true,
         description: "Type names should be all uppercase.");
 
-    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
+    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(s_rule);
 
     public override void Initialize(AnalysisContext context)
     {
@@ -40,7 +40,7 @@ public class RoslynAnalyzerTemplate : DiagnosticAnalyzer
         if (namedTypeSymbol.Name.ToCharArray().Any(char.IsLower))
         {
             // For all such symbols, produce a diagnostic.
-            var diagnostic = Diagnostic.Create(Rule, namedTypeSymbol.Locations[0], namedTypeSymbol.Name);
+            var diagnostic = Diagnostic.Create(s_rule, namedTypeSymbol.Locations[0], namedTypeSymbol.Name);
 
             context.ReportDiagnostic(diagnostic);
         }
