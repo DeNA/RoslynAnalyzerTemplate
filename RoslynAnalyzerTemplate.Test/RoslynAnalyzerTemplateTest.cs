@@ -52,8 +52,8 @@ public class RoslynAnalyzerTemplateTest
         Assert.That(actual.First().GetMessage(), Is.EqualTo("Type name 'TypeName' contains lowercase letters"));
 
         LocationAssert.HaveTheSpan(
-            new LinePosition(9, 10),
-            new LinePosition(9, 18),
+            new LinePosition(12, 10),
+            new LinePosition(12, 18),
             actual.First().Location
         );
     }
