@@ -1,4 +1,7 @@
-﻿using System.Collections.Immutable;
+﻿// Copyright (c) 2020-2023 Koji Hasegawa.
+// This software is released under the MIT License.
+
+using System.Collections.Immutable;
 using System.Composition;
 using System.Linq;
 using System.Threading;
