@@ -29,7 +29,7 @@
     <authors></authors>
 
     <!-- Optional elements -->
-    <projectUrl>https://github.com/nowsprinting/RoslynAnalyzerTemplate</projectUrl>
+    <projectUrl>https://github.com/DeNA/RoslynAnalyzerTemplate</projectUrl>
     <license></license>
     <icon></icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

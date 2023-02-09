@@ -1,4 +1,4 @@
-// Copyright (c) 2020-2023 Koji Hasegawa.
+// Copyright (c) 2020-2023 DeNA Co., Ltd.
 // This software is released under the MIT License.
 
 using System;
