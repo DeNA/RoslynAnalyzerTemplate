@@ -64,6 +64,7 @@ jobs:
           rm -rf \
             .github/template-cleanup \
             .github/workflows/template-cleanup.yml \
+            .github/CODEOWNERS \
             LICENSE
 
       # Commit modified files
