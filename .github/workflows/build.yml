@@ -31,7 +31,7 @@ jobs:
         run: dotnet test --logger junit --results-directory "TestResults-${{ env.DOTNET_VERSION }}"
 
       - name: Upload test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dotnet-test-results-${{ env.DOTNET_VERSION }}
           path: TestResults-${{ env.DOTNET_VERSION }}
@@ -41,7 +41,7 @@ jobs:
         run: dotnet pack --configuration Release
 
       - name: Upload package
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dotnet-package-${{ env.DOTNET_VERSION }}
           path: ./**/*.nupkg
