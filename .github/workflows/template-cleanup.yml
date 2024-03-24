@@ -66,6 +66,7 @@ jobs:
             .github/template-cleanup \
             .github/workflows/template-cleanup.yml \
             .github/CODEOWNERS \
+            .github/pull_request_template.md \
             LICENSE
 
       # Commit modified files
