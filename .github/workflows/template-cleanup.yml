@@ -48,6 +48,7 @@ jobs:
           done
 
           # Replace template name in project files
+          find . -type f \( -name "*.sln" -or -name "*.csproj" -or -name "*.cs" -or -name ".editorconfig" \) -exec sed -i "s/DeNA Co., Ltd/$GITHUB_REPOSITORY_OWNER/g" {} +
           find . -type f \( -name "*.sln" -or -name "*.csproj" -or -name "*.cs" \) -exec sed -i "s/DeNA/$GITHUB_REPOSITORY_OWNER/g" {} +
           find . -type f \( -name "*.sln" -or -name "*.csproj" -or -name "*.cs" \) -exec sed -i "s/RoslynAnalyzerTemplate/$NAME/g" {} +
           find . -type f -name "AnalyzerReleases.*.md" -exec sed -i "s/RoslynAnalyzerTemplate/$NAME/g" {} +
