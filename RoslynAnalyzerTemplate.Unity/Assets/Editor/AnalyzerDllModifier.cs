@@ -17,7 +17,7 @@ namespace Editor
             }
 
             var importer = AssetImporter.GetAtPath(assetPath) as PluginImporter;
-            if (!importer)
+            if (importer == null)
             {
                 return;
             }

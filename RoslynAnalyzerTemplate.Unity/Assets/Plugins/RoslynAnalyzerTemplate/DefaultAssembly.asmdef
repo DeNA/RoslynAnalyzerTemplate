@@ -1,5 +1,5 @@
 {
-    "name": "RoslynAnalyzerTemplate",
+    "name": "DefaultAssembly",
     "rootNamespace": "",
     "references": [],
     "includePlatforms": [
